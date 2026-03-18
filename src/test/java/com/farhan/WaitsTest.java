@@ -20,7 +20,7 @@ public class WaitsTest {
         driver.findElement(By.xpath("//button[text()='Start']")).click();
         String text = driver.findElement(By.xpath("//div[@id='finish']/h4")).getText();
         Assertions.assertEquals("Hello World!", text);
-
+        //will fail
     }
 
     @Test
