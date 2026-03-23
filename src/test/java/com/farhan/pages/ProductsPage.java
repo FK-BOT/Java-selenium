@@ -1,5 +1,9 @@
 package com.farhan.pages;
 import org.openqa.selenium.*;
+import org.openqa.selenium.devtools.v85.page.Page;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 import java.util.List;
 
 public class ProductsPage {
@@ -7,33 +11,49 @@ public class ProductsPage {
 
     public ProductsPage(WebDriver driver){
         this.driver=driver;
+        PageFactory.initElements(driver,this);
     }
+    @FindBy(className = "title")
+    private WebElement pageTitle;
 
-    private By pageTitle=By.className("title");
-    private By productNames=By.className("inventory_item_name");
+    @FindBy(className = "inventory_item_name")
+    private List<WebElement> productNames;
 //    private By sortDropdown=By.className("product_sort_container");
-    private By cartIcon=By.className("Shopping_cart_container");
-    private By cartCount=By.className("shoppimg_cart_badge");
+    @FindBy(className = "shopping_cart_container")
+    private WebElement cartIcon;
+    @FindBy(className = "shopping_cart_badge")
+    private WebElement cartCount;
+
+
+
+
 
     public String getPageTitle(){
-        return driver.findElement(pageTitle).getText();
+        return pageTitle.getText();
     }
 
     public int getProductCount(){
-        return driver.findElements(productNames).size();
+        return productNames.size();
     }
 
+
+
     public List<WebElement> getProductNames(){
-        return driver.findElements(productNames);
+        return productNames;
     }
     public void clickCart(){
-        driver.findElement(cartIcon).click();
+        cartIcon.click();
     }
     public String cartCount(){
-        return driver.findElement(cartCount).getText();
+        return cartCount.getText();
     }
+
+
+
+
+
     public boolean isProductsPageLoaded(){
-        return driver.findElement(pageTitle).getText().equals("Products");
+        return pageTitle.getText().equals("Products");
     }
 
 }

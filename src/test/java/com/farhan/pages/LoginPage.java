@@ -1,27 +1,33 @@
 package com.farhan.pages;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
     private WebDriver driver;
 
     public LoginPage(WebDriver driver){
         this.driver=driver;
+        PageFactory.initElements(driver,this);
     }
-
-    private By usenameField=By.id("user-name");
-    private By passwordField=By.id("password");
-    private By loginButton=By.id("login-button");
-    private By errorMessage=By.cssSelector("[data-test='error']");
+    @FindBy(id="user-name")
+    private WebElement usenameField;
+    @FindBy(id="password")
+    private WebElement passwordField;
+    @FindBy(id="login-button")
+    private WebElement loginButton;
+    @FindBy(css="[data-test='error']")
+    private WebElement errorMessage;
 
     public void enterUserName(String username){
-        driver.findElement(usenameField).sendKeys(username);
+        usenameField.sendKeys(username);
     }
 
     public void enterPassword(String password){
-        driver.findElement(passwordField).sendKeys(password);
+        passwordField.sendKeys(password);
     }
     public void clickLogin(){
-        driver.findElement(loginButton).click();
+        loginButton.click();
     }
     public void login(String username,String password){
         enterUserName(username);
@@ -29,7 +35,7 @@ public class LoginPage {
         clickLogin();
     }
     public String getErrorMessage(){
-        return driver.findElement(errorMessage).getText();
+        return errorMessage.getText();
     }
 
 }
