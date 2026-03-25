@@ -18,5 +18,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+
       - name: Run tests
         run: mvn test --no-transfer-progress
