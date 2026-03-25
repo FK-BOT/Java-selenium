@@ -3,6 +3,7 @@ package com.farhan;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.*;
 import java.time.Duration;
 
@@ -11,7 +12,9 @@ public class WaitsTest {
 
     @BeforeEach
     void setUp(){
-        driver=new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless=new", "--no-sandbox", "--disable-dev-shm-usage");
+        driver = new ChromeDriver(options);
     }
     @Test
     void implicitTest() {
