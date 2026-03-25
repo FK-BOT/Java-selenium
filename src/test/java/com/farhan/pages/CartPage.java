@@ -35,7 +35,7 @@ public class CartPage {
 //        addToCart.click();
 //    }
     public void addAllItems() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         int total = driver.findElements(
                 By.xpath("//button[contains(@id,'add-to-cart')]")
