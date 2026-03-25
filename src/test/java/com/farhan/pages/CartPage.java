@@ -12,7 +12,7 @@ import java.util.List;
 public class CartPage {
 
     private WebDriver driver;
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
 
     @FindBy(className = "shopping_cart_badge")
     private WebElement cartBadge;
