@@ -27,6 +27,7 @@ public class CartTest extends BaseTest{
 
         System.out.println(cartPage.getCartCount());
         Assertions.assertEquals("6",cartPage.getCartCount());
+//        Assertions.assertEquals("6",cartPage.getCartCount());
 
     }
 

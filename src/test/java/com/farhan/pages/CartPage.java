@@ -35,24 +35,16 @@ public class CartPage {
 //        addToCart.click();
 //    }
     public void addAllItems() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
         int total = driver.findElements(
                 By.xpath("//button[contains(@id,'add-to-cart')]")
         ).size();
 
         for (int i = 0; i < total; i++) {
-            List<WebElement> buttons = driver.findElements(
+            WebElement button = driver.findElement(
                     By.xpath("//button[contains(@id,'add-to-cart')]")
             );
-            WebElement button = buttons.get(0);
-            String buttonId = button.getAttribute("id");
-            System.out.println("Clicking: " + buttonId);
             button.click();
-
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(
-                    By.id(buttonId)
-            ));
+            try { Thread.sleep(500); } catch (InterruptedException e) {}
         }
     }
 
